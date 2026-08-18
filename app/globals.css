@@ -265,3 +265,16 @@ footer { padding: 2.5rem 0 3.5rem; }
 .btn.small { font-size: 0.7rem; padding: 0.5rem 0.95rem; box-shadow: none; }
 .btn[disabled] { opacity: 0.5; cursor: not-allowed; box-shadow: none; transform: none; }
 .danger { color: var(--accent); }
+
+/* Admin sits slightly apart from the public nav items — it's a tool, not a page. */
+.nav-links .nav-admin {
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  padding: 0.35rem 0.8rem;
+  color: var(--text-muted);
+}
+.nav-links .nav-admin:hover,
+.nav-links .nav-admin[aria-current="page"] {
+  color: var(--accent);
+  border-color: var(--accent);
+}

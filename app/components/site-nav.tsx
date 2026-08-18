@@ -7,6 +7,7 @@ import { site } from "../lib/content";
 export function SiteNav() {
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const isAdmin = pathname?.startsWith("/admin");
 
   return (
     <header className="nav">
@@ -23,6 +24,10 @@ export function SiteNav() {
           <a href="https://www.futurechronicles.org" target="_blank" rel="noopener">
             futurechronicles.org ↗
           </a>
+          {/* Password-protected: /admin renders a sign-in form unless you hold a valid session. */}
+          <Link href="/admin" className="nav-admin" aria-current={isAdmin ? "page" : undefined}>
+            Admin
+          </Link>
         </nav>
       </div>
     </header>

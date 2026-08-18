@@ -1,0 +1,28 @@
+ADDS THE "ADMIN" BUTTON TO THE TOP MENU
+=======================================
+
+Only 2 files changed. Nothing else is touched, so anything you have
+already saved in the admin stays exactly as it is.
+
+  app/components/site-nav.tsx   <- adds the Admin button
+  app/globals.css               <- styles it as a pill
+
+HOW TO UPLOAD
+-------------
+1. Go to your repo:
+   github.com/interactivefilm25/futurechroniclesspeakerhub
+
+2. Click "Add file" -> "Upload files"
+
+3. Drag the "app" folder from this unzipped folder into the browser.
+
+4. Click "Commit changes".
+   (GitHub replaces just those 2 files. It keeps everything else.)
+
+5. Wait about a minute. Vercel rebuilds by itself.
+   Refresh your site - the ADMIN button is in the top right.
+
+IS IT SAFE?
+-----------
+Yes. The button is only a link. Anyone clicking it still has to type
+your password before they can see or change anything.
