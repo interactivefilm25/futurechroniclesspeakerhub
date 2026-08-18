@@ -1,0 +1,66 @@
+{
+  "site": {
+    "brandLine1": "Future Chronicles",
+    "brandLine2": "Hack the Future Labs — Speaker Archive",
+    "heroEyebrow": "Hack the Future Labs — Speaker Archive",
+    "heroHeadline": "People carrying *practices*, questions and lived knowledge into the lab.",
+    "heroSub": "Future Chronicles is not a conference directory. Each entry is a working record of a practice in progress — what someone is changing, and the question they bring with them.",
+    "statusLabel": "Private preview — not yet public",
+    "archiveHeading": "The archive",
+    "themesHeading": "Programme themes",
+    "themesNote": "Lines of inquiry the lab is organised around",
+    "ctaHeading": "Carrying a practice into the lab?",
+    "ctaNote": "Get in touch to add an entry to the archive.",
+    "footerLeft": "Future Chronicles — a project of futurechronicles.org",
+    "footerRight": ""
+  },
+  "themes": [
+    "AI & Agency",
+    "Cultural Strategy",
+    "Indigenous Knowledge",
+    "Labour & Justice",
+    "Sovereignty & Systems",
+    "Systems Change"
+  ],
+  "speakers": [
+    {
+      "slug": "karen-palmer",
+      "initials": "KP",
+      "name": "Karen Palmer",
+      "role": "Immersive artist, futurist and storyteller from the future",
+      "theme": "AI & Agency",
+      "location": "United Kingdom",
+      "summary": "Creating emotionally responsive stories that expose bias and return agency to the participant.",
+      "bio": [],
+      "question": "How do we move from being measured by intelligent systems to actively shaping the futures those systems make possible?",
+      "links": [],
+      "portrait": ""
+    },
+    {
+      "slug": "kambale-musavuli",
+      "initials": "KM",
+      "name": "Kambale Musavuli",
+      "role": "Congolese strategist, technologist and political analyst",
+      "theme": "Sovereignty & Systems",
+      "location": "Democratic Republic of Congo / United States",
+      "summary": "Connecting Africa’s past to its possible futures and asking who owns the systems built from its labour and resources.",
+      "bio": [],
+      "question": "How can Africa shape a technological future that does not reproduce the systems of extraction that have defined its past?",
+      "links": [],
+      "portrait": ""
+    },
+    {
+      "slug": "mophat-okinyi",
+      "initials": "MO",
+      "name": "Mophat Okinyi",
+      "role": "Data worker organiser and global advocate",
+      "theme": "Labour & Justice",
+      "location": "Kenya",
+      "summary": "Making the invisible labour behind artificial intelligence visible, organised and impossible to ignore.",
+      "bio": [],
+      "question": "What changes when the people training AI become organised authors of its future rather than an invisible workforce?",
+      "links": [],
+      "portrait": ""
+    }
+  ]
+}
