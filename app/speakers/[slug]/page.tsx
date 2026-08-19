@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteNav } from "../../components/site-nav";
 import { SiteFooter } from "../../components/site-footer";
-import { Plate } from "../../components/plate";
+import { SpeakerPlate } from "../../components/speaker-plate";
 import { getSpeaker, speakers } from "../../lib/content";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -72,7 +72,7 @@ export default async function SpeakerPage({ params }: Props) {
             </div>
 
             <div>
-              <Plate speaker={speaker} large />
+              <SpeakerPlate speaker={speaker} index={index} />
               <dl>
                 <div className="side-fact">
                   <dt>Theme</dt>

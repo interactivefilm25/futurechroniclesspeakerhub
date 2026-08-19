@@ -278,3 +278,184 @@ footer { padding: 2.5rem 0 3.5rem; }
   color: var(--accent);
   border-color: var(--accent);
 }
+
+/* ============================================================
+   PORTFOLIO TILE GRID
+   Big square blocks; every 5th spans 2×2. Tones cycle so an
+   archive with no photographs still reads as a mosaic.
+   ============================================================ */
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-auto-rows: minmax(260px, auto);
+  gap: 1.25rem;
+}
+@media (min-width: 900px) {
+  .tile-grid { grid-auto-rows: minmax(300px, auto); gap: 1.5rem; }
+}
+
+.tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  border-radius: 20px;
+  text-decoration: none;
+  color: inherit;
+  isolation: isolate;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: transform 320ms cubic-bezier(.2,.7,.3,1), box-shadow 320ms ease;
+  animation: tile-in 460ms cubic-bezier(.2,.7,.3,1) both;
+  animation-delay: calc(var(--tile-i, 0) * 55ms);
+}
+@keyframes tile-in {
+  from { opacity: 0; transform: translateY(18px) scale(.97); }
+  to   { opacity: 1; transform: none; }
+}
+.tile:hover { transform: translateY(-6px); box-shadow: 0 28px 50px -28px rgba(18,27,37,.5); }
+.tile:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+
+/* the 2×2 feature block */
+.tile--feature { grid-column: span 1; grid-row: span 1; }
+@media (min-width: 720px) {
+  .tile--feature { grid-column: span 2; grid-row: span 2; }
+}
+
+/* ---- media layer ---- */
+.tile-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: flex;
+  align-items: flex-start;      /* square tiles: sit the plate up top, clear of the name */
+  justify-content: center;
+  padding-top: 1.4rem;
+  overflow: hidden;
+}
+@media (min-width: 720px) {
+  .tile--feature .tile-media { align-items: center; padding-top: 0; }
+}
+.tile-img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 520ms cubic-bezier(.2,.7,.3,1);
+}
+.tile:hover .tile-img { transform: scale(1.06); }
+
+/* the typographic plate used until a portrait exists */
+.tile-initials {
+  font-family: var(--font-display), sans-serif;
+  /* sized and lifted so it never sits behind the name block below */
+  font-size: clamp(2.6rem, 8vw, 4.2rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  opacity: .92;
+  transition: transform 520ms cubic-bezier(.2,.7,.3,1), opacity 320ms ease;
+}
+@media (min-width: 720px) {
+  .tile--feature .tile-initials { font-size: clamp(4.5rem, 13vw, 9rem); }
+}
+.tile:hover .tile-initials { transform: scale(1.06) rotate(-2deg); opacity: 1; }
+
+/* keeps text readable over both photographs and flat tones */
+.tile::after {
+  content: "";
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(to top, rgba(8,12,17,.9) 0%, rgba(8,12,17,.62) 34%, rgba(8,12,17,.12) 66%, rgba(8,12,17,0) 100%);
+  opacity: .9;
+  transition: opacity 320ms ease;
+}
+.tile:hover::after { opacity: 1; }
+
+.tile-index {
+  position: absolute; top: 1.1rem; right: 1.25rem; z-index: 3;
+  font-family: var(--font-display), sans-serif;
+  font-size: .72rem; letter-spacing: .1em;
+  color: rgba(255,255,255,.62);
+}
+
+.tile-body {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column; gap: .3rem;
+  padding: 1.35rem;
+  color: #fff;
+}
+.tile-theme {
+  align-self: flex-start;
+  font-size: .6rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+  padding: .28rem .6rem; margin-bottom: .3rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,.16);
+  backdrop-filter: blur(6px);
+  color: #fff;
+}
+.tile-name {
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(1.05rem, 2.1vw, 1.35rem);
+  line-height: 1.2;
+}
+.tile--feature .tile-name { font-size: clamp(1.35rem, 2.8vw, 2rem); }
+.tile-role {
+  font-size: .84rem; line-height: 1.45;
+  color: rgba(255,255,255,.78);
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.tile-more {
+  font-size: .7rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+  color: #fff;
+  margin-top: .5rem;
+  opacity: 0; transform: translateY(6px);
+  transition: opacity 260ms ease, transform 260ms ease;
+}
+.tile:hover .tile-more, .tile:focus-visible .tile-more { opacity: 1; transform: none; }
+
+/* ---- tones ---- */
+.tile--ink   .tile-media { background: var(--text); }
+.tile--ink   .tile-initials { color: var(--bg); }
+.tile--rust  .tile-media { background: var(--accent); }
+.tile--rust  .tile-initials { color: #fff; }
+.tile--teal  .tile-media { background: var(--signal-bg); }
+.tile--teal  .tile-initials { color: #06232c; }
+.tile--cream .tile-media { background: var(--surface-2); }
+.tile--cream .tile-initials { color: var(--text); }
+.tile--sand  .tile-media { background: var(--border); }
+.tile--sand  .tile-initials { color: var(--text); }
+
+@media (prefers-reduced-motion: reduce) {
+  .tile { animation: none; }
+  .tile:hover { transform: none; }
+  .tile:hover .tile-img, .tile:hover .tile-initials { transform: none; }
+  .tile-more { opacity: 1; transform: none; }
+}
+
+/* ---- profile portrait block (same tone system as the grid tiles) ---- */
+.plate {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.75rem;
+  border: 1px solid var(--border);
+}
+.plate-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.plate-initials {
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(3.5rem, 9vw, 5.5rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.plate--ink   { background: var(--text); }
+.plate--ink   .plate-initials { color: var(--bg); }
+.plate--rust  { background: var(--accent); }
+.plate--rust  .plate-initials { color: #fff; }
+.plate--teal  { background: var(--signal-bg); }
+.plate--teal  .plate-initials { color: #06232c; }
+.plate--cream { background: var(--surface-2); }
+.plate--cream .plate-initials { color: var(--text); }
+.plate--sand  { background: var(--border); }
+.plate--sand  .plate-initials { color: var(--text); }

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { SiteNav } from "./components/site-nav";
 import { SiteFooter } from "./components/site-footer";
 import { Constellation } from "./components/constellation";
-import { Plate } from "./components/plate";
+import { SpeakerTile } from "./components/speaker-tile";
 import { site, speakers, themes, themeCounts, headlineParts } from "./lib/content";
 
 export default function HomePage() {
@@ -22,12 +22,14 @@ export default function HomePage() {
               )}
             </h1>
             <p className="hero-sub">{site.heroSub}</p>
-            <div className="hero-meta">
-              <span className="status-pill">
-                <span className="status-dot" />
-                {site.statusLabel}
-              </span>
-            </div>
+            {site.statusLabel ? (
+              <div className="hero-meta">
+                <span className="status-pill">
+                  <span className="status-dot" />
+                  {site.statusLabel}
+                </span>
+              </div>
+            ) : null}
           </div>
         </section>
 
@@ -40,24 +42,9 @@ export default function HomePage() {
               </p>
             </div>
             {speakers.length ? (
-              <div className="speaker-grid">
+              <div className="tile-grid">
                 {speakers.map((s, i) => (
-                  <Link key={s.slug} href={`/speakers/${s.slug}`} className="speaker-card">
-                    <Plate speaker={s} />
-                    <div>
-                      <span className="card-index eyebrow">
-                        Entry {String(i + 1).padStart(3, "0")}
-                      </span>
-                      <h3>{s.name}</h3>
-                      <p className="speaker-role">{s.role}</p>
-                      <div className="card-tags">
-                        {s.theme ? <span className="tag theme-tag">{s.theme}</span> : null}
-                        {s.location ? <span className="tag">{s.location}</span> : null}
-                      </div>
-                      <p className="card-summary">{s.summary}</p>
-                      <span className="card-link">Read full entry &rarr;</span>
-                    </div>
-                  </Link>
+                  <SpeakerTile key={s.slug} speaker={s} index={i} />
                 ))}
               </div>
             ) : (
