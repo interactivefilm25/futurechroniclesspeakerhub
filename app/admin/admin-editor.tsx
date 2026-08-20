@@ -155,21 +155,25 @@ export function AdminEditor() {
     state === "error" ? "Not saved" :
     state === "saved" ? "All changes saved" : "No changes yet";
 
+  const saveBar = (position: "top" | "bottom") => (
+    <div className={position === "bottom" ? "savebar savebar-bottom" : "savebar"}>
+      <div className={`savebar-state ${state}`}>
+        <span className="dot" />
+        {stateLabel}
+      </div>
+      <div className="admin-row">
+        <button className="btn small ghost" type="button" onClick={signOut}>Sign out</button>
+        <button className="btn small" type="button" onClick={save}
+          disabled={state === "saving" || state === "idle" || state === "saved"}>
+          Save &amp; publish
+        </button>
+      </div>
+    </div>
+  );
+
   return (
     <div>
-      <div className="savebar">
-        <div className={`savebar-state ${state}`}>
-          <span className="dot" />
-          {stateLabel}
-        </div>
-        <div className="admin-row">
-          <button className="btn small ghost" type="button" onClick={signOut}>Sign out</button>
-          <button className="btn small" type="button" onClick={save}
-            disabled={state === "saving" || state === "idle" || state === "saved"}>
-            Save &amp; publish
-          </button>
-        </div>
-      </div>
+      {saveBar("top")}
 
       {message ? <div className="protected-banner">{message}</div> : null}
 
@@ -410,6 +414,8 @@ export function AdminEditor() {
           ))}
         </div>
       </details>
+
+      {saveBar("bottom")}
     </div>
   );
 }

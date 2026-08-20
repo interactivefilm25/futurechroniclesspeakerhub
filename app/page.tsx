@@ -2,6 +2,7 @@ import Link from "next/link";
 import { SiteNav } from "./components/site-nav";
 import { SiteFooter } from "./components/site-footer";
 import { Constellation } from "./components/constellation";
+import { Parallax } from "./components/parallax";
 import { SpeakerTile } from "./components/speaker-tile";
 import { site, speakers, themes, themeCounts, headlineParts } from "./lib/content";
 
@@ -13,7 +14,9 @@ export default function HomePage() {
       <SiteNav />
       <main>
         <section className="hero">
-          <Constellation />
+          <Parallax speed={0.28} clamp={110} mode="scroll" className="hero-canvas">
+            <Constellation />
+          </Parallax>
           <div className="wrap hero-inner">
             <span className="eyebrow dot-eyebrow hero-eyebrow">{site.heroEyebrow}</span>
             <h1>
