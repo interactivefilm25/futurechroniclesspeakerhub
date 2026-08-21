@@ -31,7 +31,9 @@
       "theme": "AI & Agency",
       "location": "United Kingdom",
       "summary": "Creating emotionally responsive stories that expose bias and return agency to the participant.",
-      "bio": [],
+      "bio": [
+        "test"
+      ],
       "question": "How do we move from being measured by intelligent systems to actively shaping the futures those systems make possible?",
       "links": [],
       "portrait": "/portraits/karen-palmer.jpg"
